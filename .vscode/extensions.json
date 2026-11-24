@@ -1,0 +1,4 @@
+{
+  // recommended VS Code extensions
+  "recommendations": ["esbenp.prettier-vscode"]
+}

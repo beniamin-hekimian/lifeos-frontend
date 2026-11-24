@@ -1,0 +1,12 @@
+# generated dependencies and lockfiles
+dist
+node_modules
+package-lock.json
+skills-lock.json
+
+# CLI-managed agent skills
+.agents/skills/
+.opencode/skills/
+
+# test output, once tests exist
+coverage/

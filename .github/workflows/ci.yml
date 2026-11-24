@@ -1,0 +1,25 @@
+name: CI
+
+# check PRs into main, and re-check after merges
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read # least privilege
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # fetch repo
+      - uses: actions/setup-node@v4 # install Node and cache npm
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci # exact install from lockfile
+      - run: npm run lint # ESLint rules
+      - run: npm run format:check # Prettier
+      - run: npm run build # tsc -b + vite build
